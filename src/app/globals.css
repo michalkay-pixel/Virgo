@@ -1,0 +1,471 @@
+@import "tailwindcss";
+
+/* Virgo Laser Clinic - "Old Money" Color Palette */
+@theme {
+  /* Brand Colors */
+  --color-charcoal: #2C2A29;
+  --color-cream: #F5F3EF;
+  --color-copper: #B07C5D;
+  --color-taupe: #8A8683;
+  
+  /* Extended Palette */
+  --color-charcoal-light: #3D3B3A;
+  --color-copper-light: #C99A7D;
+  --color-copper-dark: #8F6349;
+  --color-copper-glow: rgba(176, 124, 93, 0.4);
+  
+  /* Font Families */
+  --font-heading: var(--font-cinzel), serif;
+  --font-body: var(--font-lato), sans-serif;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-copper);
+  color: var(--color-cream);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default focus outline and add custom */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+}
+
+/* ===================================
+   CUSTOM SCROLLBAR - Luxury Thin Style
+   =================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-taupe);
+  border-radius: 4px;
+  border: 2px solid var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-taupe) var(--color-cream);
+}
+
+/* ===================================
+   TEXTURE OVERLAYS
+   =================================== */
+.texture-grain {
+  position: relative;
+}
+
+.texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.texture-noise {
+  position: relative;
+}
+
+.texture-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ===================================
+   ANIMATION UTILITIES
+   =================================== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Slow Pulse - for scroll indicator */
+@keyframes slowPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+}
+
+.animate-slow-pulse {
+  animation: slowPulse 3s ease-in-out infinite;
+}
+
+/* Shimmer/Shine Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Subtle Glow Pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(176, 124, 93, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(176, 124, 93, 0.4);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Infinite Scroll (for partner logos) */
+@keyframes scrollX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scrollX 30s linear infinite;
+}
+
+/* Border Draw Animation */
+@keyframes borderDraw {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-border-draw {
+  animation: borderDraw 0.5s ease-out forwards;
+}
+
+/* Star Twinkle */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* ===================================
+   HOVER EFFECT UTILITIES
+   =================================== */
+
+/* Underline Draw Effect */
+.hover-underline-draw {
+  position: relative;
+}
+
+.hover-underline-draw::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-copper);
+  transition: width 0.3s ease-out;
+}
+
+.hover-underline-draw:hover::after {
+  width: 100%;
+}
+
+/* Card Lift Effect */
+.hover-lift {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(44, 42, 41, 0.12);
+}
+
+/* Copper Glow on Hover */
+.hover-glow {
+  transition: box-shadow 0.3s ease-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(176, 124, 93, 0.3);
+}
+
+/* Image Zoom Effect */
+.hover-zoom {
+  overflow: hidden;
+}
+
+.hover-zoom img {
+  transition: transform 0.7s ease-out;
+}
+
+.hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   VIGNETTE & OVERLAY UTILITIES
+   =================================== */
+
+.vignette {
+  position: relative;
+}
+
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(44, 42, 41, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+.gradient-fade-bottom {
+  position: relative;
+}
+
+.gradient-fade-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, var(--color-cream));
+  pointer-events: none;
+}
+
+/* ===================================
+   BUTTON PRESS EFFECT
+   =================================== */
+.press-effect {
+  transition: transform 0.1s ease-out;
+}
+
+.press-effect:active {
+  transform: scale(0.98);
+}
+
+/* ===================================
+   STAGGER ANIMATION DELAYS
+   =================================== */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+
+/* ===================================
+   COPPER ACCENT LINE
+   =================================== */
+.copper-line {
+  position: relative;
+}
+
+.copper-line::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-copper),
+    transparent
+  );
+}
+
+/* ===================================
+   DECORATIVE CORNERS
+   =================================== */
+.corner-accent {
+  position: relative;
+}
+
+.corner-accent::before,
+.corner-accent::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--color-copper);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.5;
+}
+
+.corner-accent::before {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.corner-accent::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* ===================================
+   LOADING STATES
+   =================================== */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream) 25%,
+    rgba(138, 134, 131, 0.1) 50%,
+    var(--color-cream) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
