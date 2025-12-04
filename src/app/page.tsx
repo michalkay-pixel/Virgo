@@ -8,6 +8,7 @@ import { ExpertProfile } from "@/components/sections/ExpertProfile";
 import { TreatmentGrid } from "@/components/treatments/TreatmentGrid";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
+import { SocialJournal } from "@/components/sections/SocialJournal";
 import { JournalPreview } from "@/components/sections/JournalPreview";
 import { PageReveal } from "@/components/motion/PageReveal";
 
@@ -34,11 +35,14 @@ export default function Home() {
         {/* 6. Product Showcase - Simon Ourian M.D. Beyond Beauty */}
         <ProductShowcase />
 
-        {/* 7. Journal Preview - 3 blog articles */}
+        {/* 7. Social Journal - Instagram Visual Diary */}
+        <SocialJournal />
+
+        {/* 8. Journal Preview - 3 blog articles */}
         <JournalPreview />
       </main>
       
-      {/* 8. Concierge Footer */}
+      {/* 9. Concierge Footer */}
       <Footer />
 
       {/* Sticky mobile offer badge */}
