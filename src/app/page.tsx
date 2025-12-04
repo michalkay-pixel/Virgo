@@ -7,6 +7,7 @@ import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { ExpertProfile } from "@/components/sections/ExpertProfile";
 import { TreatmentGrid } from "@/components/treatments/TreatmentGrid";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
+import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { JournalPreview } from "@/components/sections/JournalPreview";
 import { PageReveal } from "@/components/motion/PageReveal";
 
@@ -30,11 +31,14 @@ export default function Home() {
         {/* 5. Partner Strip - Obagi/ZO logos (placeholders for now) */}
         <PartnerStrip />
 
-        {/* 6. Journal Preview - 3 blog articles */}
+        {/* 6. Product Showcase - Simon Ourian M.D. Beyond Beauty */}
+        <ProductShowcase />
+
+        {/* 7. Journal Preview - 3 blog articles */}
         <JournalPreview />
       </main>
       
-      {/* 7. Concierge Footer */}
+      {/* 8. Concierge Footer */}
       <Footer />
 
       {/* Sticky mobile offer badge */}
