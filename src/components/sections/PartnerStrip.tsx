@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Badge } from "@/components/ui/badge";
-import { DiamondStar } from "@/components/ui/Logo";
 
 // Partner data - logos will be added later
 const partners = [
@@ -16,60 +14,55 @@ const partners = [
 
 export function PartnerStrip() {
   return (
-    <section className="relative bg-cream py-16 md:py-20">
-      {/* Top decorative divider */}
-      <div className="absolute left-0 right-0 top-0">
-        <div className="mx-auto flex max-w-xl items-center justify-center gap-4 px-4">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-copper/40 to-copper/40" />
-          <DiamondStar className="h-3 w-3 text-copper/50" />
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-copper/40 to-copper/40" />
+    <section className="relative bg-cream">
+      {/* Top copper rule - full width */}
+      <div className="h-px w-full bg-copper/40" />
+
+      <div className="relative py-16 md:py-20">
+        {/* Decorative corner brackets */}
+        <div className="pointer-events-none absolute inset-x-6 inset-y-4 md:inset-x-12 md:inset-y-6">
+          {/* Top left corner */}
+          <div className="absolute left-0 top-0 h-6 w-6 md:h-8 md:w-8">
+            <div className="absolute left-0 top-0 h-full w-px bg-copper/30" />
+            <div className="absolute left-0 top-0 h-px w-full bg-copper/30" />
+          </div>
+          {/* Top right corner */}
+          <div className="absolute right-0 top-0 h-6 w-6 md:h-8 md:w-8">
+            <div className="absolute right-0 top-0 h-full w-px bg-copper/30" />
+            <div className="absolute right-0 top-0 h-px w-full bg-copper/30" />
+          </div>
+          {/* Bottom left corner */}
+          <div className="absolute bottom-0 left-0 h-6 w-6 md:h-8 md:w-8">
+            <div className="absolute bottom-0 left-0 h-full w-px bg-copper/30" />
+            <div className="absolute bottom-0 left-0 h-px w-full bg-copper/30" />
+          </div>
+          {/* Bottom right corner */}
+          <div className="absolute bottom-0 right-0 h-6 w-6 md:h-8 md:w-8">
+            <div className="absolute bottom-0 right-0 h-full w-px bg-copper/30" />
+            <div className="absolute bottom-0 right-0 h-px w-full bg-copper/30" />
+          </div>
         </div>
-      </div>
 
-      {/* Bottom decorative divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="mx-auto flex max-w-xl items-center justify-center gap-4 px-4">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-copper/40 to-copper/40" />
-          <DiamondStar className="h-3 w-3 text-copper/50" />
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-copper/40 to-copper/40" />
-        </div>
-      </div>
+        <Container>
+          {/* Eyebrow label */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-10 text-center font-body text-[11px] uppercase tracking-[0.4em] text-copper"
+          >
+            Clinical Partners
+          </motion.p>
 
-      <Container>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
-        >
-          <Badge variant="secondary" className="mb-4">
-            Trusted Partners
-          </Badge>
-          <h2 className="font-heading text-2xl tracking-wide text-charcoal md:text-3xl">
-            Clinical Excellence, At Home
-          </h2>
-          <p className="mt-3 font-body text-sm text-taupe">
-            Official partners of the world&apos;s most advanced skincare
-            formularies
-          </p>
-        </motion.div>
-
-        {/* Partner Logos - Static version */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative overflow-hidden"
-        >
-          {/* Fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-cream to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-cream to-transparent" />
-
-          {/* Partner logos row */}
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+          {/* Partner Gallery Rail */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center"
+          >
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.id}
@@ -77,64 +70,38 @@ export function PartnerStrip() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 * index }}
-                className="group relative flex h-16 items-center justify-center px-4"
+                className="group flex items-center"
               >
-                {/* Placeholder - Text logo until actual logos are provided */}
-                <span className="relative font-heading text-lg tracking-[0.1em] text-taupe/50 transition-all duration-500 group-hover:text-charcoal md:text-xl">
+                {/* Partner name */}
+                <span className="relative px-6 py-3 font-heading text-lg tracking-[0.1em] text-taupe/60 transition-colors duration-300 group-hover:text-charcoal md:px-8 md:text-xl lg:px-10 lg:text-2xl">
                   {partner.name}
                   {/* Underline on hover */}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-copper transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-2 left-1/2 h-px w-0 -translate-x-1/2 bg-copper transition-all duration-300 group-hover:w-2/3" />
                 </span>
 
-                {/* Note: Replace with actual logo images when available
-                <Image
-                  src={`/images/partners/${partner.id}.png`}
-                  alt={partner.name}
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto opacity-40 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
-                />
-                */}
+                {/* Vertical divider (not after last item) */}
+                {index < partners.length - 1 && (
+                  <div className="hidden h-6 w-px bg-copper/30 md:block" />
+                )}
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Optional: Animated infinite scroll version (uncomment if preferred)
-        <div className="relative overflow-hidden">
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-cream to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-cream to-transparent" />
-          
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="flex gap-16"
-          >
-            {[...partners, ...partners].map((partner, index) => (
-              <div
-                key={`${partner.id}-${index}`}
-                className="flex h-16 shrink-0 items-center justify-center px-4"
-              >
-                <span className="font-heading text-lg tracking-[0.1em] text-taupe/50 md:text-xl">
-                  {partner.name}
-                </span>
-              </div>
-            ))}
           </motion.div>
-        </div>
-        */}
 
-        {/* Bottom accent text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center font-body text-xs uppercase tracking-[0.2em] text-taupe/50"
-        >
-          Authorised stockist &amp; treatment provider
-        </motion.p>
-      </Container>
+          {/* Footer text */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-10 text-center font-body text-[10px] uppercase tracking-[0.3em] text-taupe/40"
+          >
+            Authorised Stockist &amp; Treatment Provider
+          </motion.p>
+        </Container>
+      </div>
+
+      {/* Bottom copper rule - full width */}
+      <div className="h-px w-full bg-copper/40" />
     </section>
   );
 }
