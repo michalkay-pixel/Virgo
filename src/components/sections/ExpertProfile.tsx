@@ -21,64 +21,59 @@ export function ExpertProfile() {
 
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* Image Column with Editorial Frame */}
+          {/* Image Column with Circular Frame */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative flex items-center justify-center"
           >
-            {/* Editorial frame structure */}
+            {/* Circular frame structure */}
             <div className="relative">
-              {/* Outer decorative frame */}
-              <div className="absolute -inset-4 border border-copper/20" />
-              <div className="absolute -inset-8 border border-copper/10" />
+              {/* Outer decorative rings */}
+              <div className="absolute -inset-4 rounded-full border border-copper/20" />
+              <div className="absolute -inset-8 rounded-full border border-copper/10" />
+              
+              {/* Decorative corner diamonds */}
+              <div className="absolute -right-2 -top-2 z-10">
+                <DiamondStar className="h-5 w-5 text-copper" />
+              </div>
+              <div className="absolute -bottom-2 -left-2 z-10">
+                <DiamondStar className="h-5 w-5 text-copper" />
+              </div>
 
-              {/* Main Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden">
-                {/* Main Image */}
+              {/* Main Circular Image Container */}
+              <div className="relative h-72 w-72 overflow-hidden rounded-full ring-4 ring-copper/30 ring-offset-4 ring-offset-cream md:h-96 md:w-96 lg:h-[420px] lg:w-[420px]">
+                {/* Main Image - Full Color */}
                 <Image
                   src="/images/jolanta-kay.jpg"
                   alt="Jolanta Kay - Head Practitioner at Virgo Laser Clinic"
                   fill
-                  className="object-cover grayscale transition-all duration-700 hover:grayscale-[50%]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 420px"
                   priority
                 />
 
-                {/* Copper tint overlay on hover */}
-                <div className="absolute inset-0 bg-copper/0 transition-colors duration-500 hover:bg-copper/10" />
-
-                {/* Bottom gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent" />
-
-                {/* Corner accents */}
-                <div className="absolute left-4 top-4 h-8 w-8">
-                  <div className="absolute left-0 top-0 h-full w-px bg-copper/60" />
-                  <div className="absolute left-0 top-0 h-px w-full bg-copper/60" />
-                </div>
-                <div className="absolute bottom-4 right-4 h-8 w-8">
-                  <div className="absolute bottom-0 right-0 h-full w-px bg-copper/60" />
-                  <div className="absolute bottom-0 right-0 h-px w-full bg-copper/60" />
-                </div>
-
-                {/* Experience badge overlay */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="absolute bottom-6 left-6 right-6"
-                >
-                  <div className="flex items-center gap-3 border border-cream/20 bg-charcoal/80 px-4 py-3 backdrop-blur-sm">
-                    <DiamondStar className="h-4 w-4 text-copper-light" />
-                    <span className="font-body text-xs uppercase tracking-[0.2em] text-cream">
-                      20+ Years of Excellence
-                    </span>
-                  </div>
-                </motion.div>
+                {/* Subtle warm overlay for brand cohesion */}
+                <div className="absolute inset-0 bg-gradient-to-b from-copper/5 via-transparent to-copper/10" />
               </div>
+
+              {/* Experience badge below circle */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2"
+              >
+                <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-copper/30 bg-cream px-5 py-2.5 shadow-lg">
+                  <DiamondStar className="h-4 w-4 text-copper" />
+                  <span className="font-body text-xs uppercase tracking-[0.15em] text-charcoal">
+                    20+ Years of Excellence
+                  </span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 
